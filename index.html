@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Saya</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">🌐 BrandKu</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Selamat Datang di <span>Website Saya</span></h1>
+            <p>Website modern yang dibuat tanpa install apapun. 
+               Hanya dengan GitHub, Cloudflare, dan semangat!</p>
+            <a href="#contact" class="btn">Hubungi Saya</a>
+            <a href="#services" class="btn btn-outline">Lihat Layanan</a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Tentang Kami</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Kami adalah tim kreatif yang berdedikasi untuk 
+                       memberikan solusi digital terbaik. Dengan pengalaman 
+                       bertahun-tahun, kami siap membantu bisnis Anda 
+                       berkembang di era digital.</p>
+                    <ul>
+                        <li>✅ Desain Modern & Responsif</li>
+                        <li>✅ Performa Cepat</li>
+                        <li>✅ SEO Friendly</li>
+                        <li>✅ Support 24/7</li>
+                    </ul>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>50+</h3>
+                        <p>Project Selesai</p>
+                    </div>
+                    <div class="stat">
+                        <h3>30+</h3>
+                        <p>Klien Puas</p>
+                    </div>
+                    <div class="stat">
+                        <h3>3+</h3>
+                        <p>Tahun Pengalaman</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Layanan Kami</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Web Design</h3>
+                    <p>Desain website modern dan menarik yang sesuai 
+                       dengan brand identity Anda.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Web Development</h3>
+                    <p>Pengembangan website dengan teknologi terkini 
+                       untuk performa terbaik.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Responsive Design</h3>
+                    <p>Website yang tampil sempurna di semua perangkat, 
+                       dari desktop hingga mobile.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>SEO Optimization</h3>
+                    <p>Optimasi mesin pencari agar website Anda mudah 
+                       ditemukan di Google.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Maintenance</h3>
+                    <p>Perawatan dan pemeliharaan website secara berkala 
+                       untuk keamanan optimal.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Analytics</h3>
+                    <p>Analisis data pengunjung website untuk strategi 
+                       bisnis yang lebih baik.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Hubungi Kami</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <span>📧</span>
+                        <div>
+                            <h4>Email</h4>
+                            <p>hello@domainmu.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span>📞</span>
+                        <div>
+                            <h4>Telepon</h4>
+                            <p>+62 812 3456 7890</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span>📍</span>
+                        <div>
+                            <h4>Alamat</h4>
+                            <p>Jakarta, Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <input type="text" placeholder="Nama Lengkap" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="text" placeholder="Subject">
+                    <textarea placeholder="Pesan Anda..." rows="5" required></textarea>
+                    <button type="submit" class="btn">Kirim Pesan ✉️</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>🌐 BrandKu</h3>
+                    <p>Solusi digital terbaik untuk bisnis Anda.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div>
+                    <h4>Sosial Media</h4>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BrandKu. All rights reserved. 
+                   Made with ❤️ using GitHub & Cloudflare</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
