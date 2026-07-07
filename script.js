@@ -1,92 +1,75 @@
-// Toggle Mobile Menu
+/* ============================================
+   DANBILA - danbila.my.id
+   Minimal JavaScript
+   Navbar + Mobile menu + Scroll reveal
+   ~1.3KB
+   ============================================ */
+
+// --- Navbar scroll effect ---
+var navbar = document.getElementById('navbar');
+
+window.addEventListener('scroll', function () {
+    if (window.scrollY > 40) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+}, { passive: true });
+
+// --- Mobile menu ---
+var hamburger = document.getElementById('hamburger');
+var navLinks = document.getElementById('navLinks');
+
 function toggleMenu() {
-    const navLinks = document.querySelector('.nav-links');
+    var isActive = hamburger.classList.toggle('active');
     navLinks.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isActive);
 }
 
-// Close menu when link clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.querySelector('.nav-links').classList.remove('active');
-    });
-});
+function closeMenu() {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+}
 
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+// Close menu on outside click
+document.addEventListener('click', function (e) {
+    if (!navbar.contains(e.target)) {
+        closeMenu();
     }
 });
 
-// Scroll reveal animation
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+// --- Scroll reveal (fade-up) ---
+function initScrollReveal() {
+    var targets = document.querySelectorAll(
+        '.layanan-card, .porto-card, .area-tag, .hero-badge, .hero-trust, .kenapa-item'
+    );
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
+    for (var i = 0; i < targets.length; i++) {
+        targets[i].classList.add('fade-up');
+    }
 
-// Observe all sections
-document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(30px)';
-    section.style.transition = 'all 0.8s ease';
-    observer.observe(section);
-});
-
-// Make hero always visible
-document.querySelector('.hero').style.opacity = '1';
-document.querySelector('.hero').style.transform = 'none';
-
-// Form handler
-function handleSubmit(event) {
-    event.preventDefault();
-    alert('Terima kasih! Pesan Anda telah terkirim. ✅');
-    event.target.reset();
-}
-
-// Smooth counter animation for stats
-function animateCounters() {
-    const stats = document.querySelectorAll('.stat h3');
-    stats.forEach(stat => {
-        const target = parseInt(stat.textContent);
-        let current = 0;
-        const increment = target / 50;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                stat.textContent = target + '+';
-                clearInterval(timer);
-            } else {
-                stat.textContent = Math.floor(current) + '+';
+    if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+            for (var j = 0; j < entries.length; j++) {
+                if (entries[j].isIntersecting) {
+                    entries[j].target.classList.add('visible');
+                    observer.unobserve(entries[j].target);
+                }
             }
-        }, 30);
-    });
-}
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -30px 0px'
+        });
 
-// Trigger counter animation when about section is visible
-const aboutObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            animateCounters();
-            aboutObserver.unobserve(entry.target);
+        for (var k = 0; k < targets.length; k++) {
+            observer.observe(targets[k]);
         }
-    });
-}, { threshold: 0.5 });
-
-const aboutSection = document.querySelector('.about');
-if (aboutSection) {
-    aboutObserver.observe(aboutSection);
+    } else {
+        for (var l = 0; l < targets.length; l++) {
+            targets[l].classList.add('visible');
+        }
+    }
 }
+
+document.addEventListener('DOMContentLoaded', initScrollReveal);

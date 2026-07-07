@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://danbila.my.id/sitemap.xml
